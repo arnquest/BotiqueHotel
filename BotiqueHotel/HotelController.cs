@@ -14,32 +14,32 @@ namespace BotiqueHotel.Controller
         }
         public List<Room> getAllRooms()
         {
-            return model.getAll();
+            return this.model.getAll();
         }
 
         public List<Room> getAvailableRooms()
         {
-            return model.getAvailableRooms();
+            return this.model.getAvailableRooms();
         }
         public bool checkIn(int roomId)
         {
-            return model.checkIn(roomId);
+            return this.model.checkIn(roomId);
         }
         public bool checkOut(int roomId)
         {
-            return model.checkOut(roomId);
+            return this.model.checkOut(roomId);
         }
         public bool setRoomAsCleaned(int roomId)
         {
-            return model.setRoomAsCleaned(roomId);
+            return this.model.setRoomAsCleaned(roomId);
         }
         public bool setRoomOOS(int roomId)
         {
-            return model.SetOOS(roomId);
+            return this.model.SetOOS(roomId);
         }
         public bool setRoomAsRepaired(int roomId)
         {
-            return model.setAsRepaired(roomId);
+            return this.model.setAsRepaired(roomId);
         }
     }
 }

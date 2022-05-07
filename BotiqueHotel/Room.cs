@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BotiqueHotel.Model
 {
@@ -31,7 +29,7 @@ namespace BotiqueHotel.Model
         public String toString()
         {
             //ternary operator
-            return "[Room Id: " + this.roomId +",Room Number: "+ this.roomNumber + ", Status: " + this.status + "]";
+            return "[Room Id: " + this.roomId + ",Room Number: " + this.roomNumber + ", Status: " + this.status + "]";
         }
     }
 }

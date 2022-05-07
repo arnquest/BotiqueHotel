@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BotiqueHotel.Model
 {
@@ -11,7 +10,7 @@ namespace BotiqueHotel.Model
         private List<Room> _roomList;
 
         public RoomList()
-        { 
+        {
             this._roomList = new List<Room>();
 
             Room rm = new Room();
@@ -45,7 +44,7 @@ namespace BotiqueHotel.Model
             Add(rm5);
         }
         public void Add(Room r)
-        { 
+        {
             this._roomList.Add(r);
         }
         public List<Room> getAll()
@@ -112,7 +111,7 @@ namespace BotiqueHotel.Model
         /// <param name="roomId"></param>
         /// <returns>successful/unsuccessful</returns>
         public bool SetOOS(int roomId)
-        { 
+        {
             try
             {
                 foreach (var room in this._roomList.Where(rm => rm.roomId == roomId))
@@ -226,7 +225,7 @@ namespace BotiqueHotel.Model
         /// </summary>
         /// <returns></returns>
         public int getCount()
-        { 
+        {
             return this._roomList.Count;
         }
     }

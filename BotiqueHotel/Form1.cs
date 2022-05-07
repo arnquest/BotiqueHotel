@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BotiqueHotel.Controller;
+﻿using BotiqueHotel.Controller;
 using BotiqueHotel.Model;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace BotiqueHotel
 {
@@ -37,7 +30,7 @@ namespace BotiqueHotel
                 UseColumnTextForButtonValue = true,
                 Name = "Check-In",
                 DataPropertyName = "Check-In"
-        };
+            };
             dataGridViewRooms.Columns.Add(checkInBtn);
 
             DataGridViewButtonColumn checkOutBtn = new DataGridViewButtonColumn
@@ -53,7 +46,7 @@ namespace BotiqueHotel
             DataGridViewButtonColumn cleanedBtn = new DataGridViewButtonColumn
             {
                 Text = "Cleaned",
-                HeaderText = "",
+                HeaderText = "Action",
                 UseColumnTextForButtonValue = true,
                 Name = "Cleaned",
                 DataPropertyName = "Cleaned"
@@ -107,69 +100,71 @@ namespace BotiqueHotel
 
         private void dataGridViewRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewRooms[0, e.RowIndex].Value != null)
-            { 
-                int roomId = Convert.ToInt32(dataGridViewRooms[0, e.RowIndex].Value);
-
-                switch (dataGridViewRooms.Columns[e.ColumnIndex].Name)
+            try
+            {
+                if (dataGridViewRooms[0, e.RowIndex].Value != null)
                 {
-                    case "Check-In":
-                        if (controller.checkIn(roomId))
-                        {
-                            MessageBox.Show(this, "Check In Successful!", "Successful!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "This room is not available for Check In", "Unable to Check In", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
-                    case "Check-Out":
-                        if (controller.checkOut(roomId))
-                        {
-                            MessageBox.Show(this, "Check Out Successful!!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "This room is not available for Check Out", "Unable to Check Out", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
-                    case "Cleaned":
-                        if (controller.setRoomAsCleaned(roomId))
-                        {
-                            MessageBox.Show(this, "Updated the room as cleaned", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "Unable to update this room as Cleaned", "Unable to set it as Cleaned", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
-                    case "Out-of-Service":
-                        if (controller.setRoomOOS(roomId))
-                        {
-                            MessageBox.Show(this, "Successfully updated the room for repair", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "Unable to update this room for repair", "Unable to set it as Repair", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
-                    case "Repaired":
-                        if (controller.setRoomAsRepaired(roomId))
-                        {
-                            MessageBox.Show(this, "Successfully updated the room as Repaired", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show(this, "Unable to update this room as Repaired", "Unable to set it as Repaired", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        break;
+                    int roomId = Convert.ToInt32(dataGridViewRooms[0, e.RowIndex].Value);
+
+                    switch (dataGridViewRooms.Columns[e.ColumnIndex].Name)
+                    {
+                        case "Check-In":
+                            if (controller.checkIn(roomId))
+                            {
+                                MessageBox.Show(this, "Check In Successful!", "Successful!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "This room is not available for Check In", "Unable to Check In", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
+                        case "Check-Out":
+                            if (controller.checkOut(roomId))
+                            {
+                                MessageBox.Show(this, "Check Out Successful!!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "This room is not available for Check Out", "Unable to Check Out", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
+                        case "Cleaned":
+                            if (controller.setRoomAsCleaned(roomId))
+                            {
+                                MessageBox.Show(this, "Updated the room as cleaned", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Unable to update this room as Cleaned", "Unable to set it as Cleaned", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
+                        case "Out-of-Service":
+                            if (controller.setRoomOOS(roomId))
+                            {
+                                MessageBox.Show(this, "Successfully updated the room for repair", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Unable to update this room for repair", "Unable to set it as Repair", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
+                        case "Repaired":
+                            if (controller.setRoomAsRepaired(roomId))
+                            {
+                                MessageBox.Show(this, "Successfully updated the room as Repaired", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show(this, "Unable to update this room as Repaired", "Unable to set it as Repaired", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            break;
+                    }
+
+                    List<Room> rooms = this.controller.getAllRooms();
+                    PopulateListViewData(rooms);
                 }
-
-                List<Room> rooms = this.controller.getAllRooms();
-                PopulateListViewData(rooms);
-
             }
-            
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
 
