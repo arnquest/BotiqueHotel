@@ -43,12 +43,12 @@ namespace BotiqueHotel
             this.roomNumberDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewRooms = new System.Windows.Forms.DataGridView();
-            this.roomIdDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomNumberDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnShowAvailable = new System.Windows.Forms.Button();
             this.btnShowAll = new System.Windows.Forms.Button();
+            this.roomIdDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomNumberDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRooms)).BeginInit();
             this.panel1.SuspendLayout();
@@ -150,33 +150,6 @@ namespace BotiqueHotel
             this.dataGridViewRooms.TabIndex = 0;
             this.dataGridViewRooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRooms_CellContentClick);
             // 
-            // roomIdDataGridViewTextBoxColumn3
-            // 
-            this.roomIdDataGridViewTextBoxColumn3.DataPropertyName = "roomId";
-            this.roomIdDataGridViewTextBoxColumn3.HeaderText = "ID";
-            this.roomIdDataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.roomIdDataGridViewTextBoxColumn3.Name = "roomIdDataGridViewTextBoxColumn3";
-            this.roomIdDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.roomIdDataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // roomNumberDataGridViewTextBoxColumn3
-            // 
-            this.roomNumberDataGridViewTextBoxColumn3.DataPropertyName = "roomNumber";
-            this.roomNumberDataGridViewTextBoxColumn3.HeaderText = "Room No";
-            this.roomNumberDataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.roomNumberDataGridViewTextBoxColumn3.Name = "roomNumberDataGridViewTextBoxColumn3";
-            this.roomNumberDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.roomNumberDataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // statusDataGridViewTextBoxColumn3
-            // 
-            this.statusDataGridViewTextBoxColumn3.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn3.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.statusDataGridViewTextBoxColumn3.Name = "statusDataGridViewTextBoxColumn3";
-            this.statusDataGridViewTextBoxColumn3.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn3.Width = 150;
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnShowAvailable);
@@ -209,6 +182,34 @@ namespace BotiqueHotel
             this.btnShowAll.UseVisualStyleBackColor = true;
             this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
             // 
+            // roomIdDataGridViewTextBoxColumn3
+            // 
+            this.roomIdDataGridViewTextBoxColumn3.DataPropertyName = "roomId";
+            this.roomIdDataGridViewTextBoxColumn3.HeaderText = "ID";
+            this.roomIdDataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.roomIdDataGridViewTextBoxColumn3.Name = "roomIdDataGridViewTextBoxColumn3";
+            this.roomIdDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.roomIdDataGridViewTextBoxColumn3.Visible = false;
+            this.roomIdDataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // roomNumberDataGridViewTextBoxColumn3
+            // 
+            this.roomNumberDataGridViewTextBoxColumn3.DataPropertyName = "roomNumber";
+            this.roomNumberDataGridViewTextBoxColumn3.HeaderText = "Room No";
+            this.roomNumberDataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.roomNumberDataGridViewTextBoxColumn3.Name = "roomNumberDataGridViewTextBoxColumn3";
+            this.roomNumberDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.roomNumberDataGridViewTextBoxColumn3.Width = 150;
+            // 
+            // statusDataGridViewTextBoxColumn3
+            // 
+            this.statusDataGridViewTextBoxColumn3.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn3.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn3.MinimumWidth = 8;
+            this.statusDataGridViewTextBoxColumn3.Name = "statusDataGridViewTextBoxColumn3";
+            this.statusDataGridViewTextBoxColumn3.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn3.Width = 150;
+            // 
             // FrmBoutiqueHotelMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -238,12 +239,12 @@ namespace BotiqueHotel
         private DataGridViewTextBoxColumn roomNumberDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn2;
         private DataGridView dataGridViewRooms;
-        private DataGridViewTextBoxColumn roomIdDataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn roomNumberDataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn3;
         private Panel panel1;
         private Button btnShowAvailable;
         private Button btnShowAll;
+        private DataGridViewTextBoxColumn roomIdDataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn roomNumberDataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn3;
     }
 }
 

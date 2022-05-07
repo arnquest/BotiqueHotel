@@ -21,5 +21,25 @@ namespace BotiqueHotel.Controller
         {
             return model.getAvailableRooms();
         }
+        public bool checkIn(int roomId)
+        {
+            return model.checkIn(roomId);
+        }
+        public bool checkOut(int roomId)
+        {
+            return model.checkOut(roomId);
+        }
+        public bool setRoomAsCleaned(int roomId)
+        {
+            return model.setRoomAsCleaned(roomId);
+        }
+        public bool setRoomOOS(int roomId)
+        {
+            return model.SetOOS(roomId);
+        }
+        public bool setRoomAsRepaired(int roomId)
+        {
+            return model.setAsRepaired(roomId);
+        }
     }
 }

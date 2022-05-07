@@ -51,7 +51,6 @@ namespace BotiqueHotel.Model
         public List<Room> getAll()
         {
             // xml or mysql if time permits
-
             return this._roomList;
         }
 
@@ -62,7 +61,21 @@ namespace BotiqueHotel.Model
         /// <returns>successful/unsuccessful</returns>
         public bool checkOut(int roomId)
         {
-            return setRoomAsVacant(roomId);
+            try
+            {
+                foreach (var room in this._roomList.Where(rm => rm.roomId == roomId))
+                {
+                    if (room.status == ROOM_STATUS.Occupied)
+                    {
+                        return setRoomAsVacant(roomId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
         }
 
         /// <summary>
@@ -77,10 +90,9 @@ namespace BotiqueHotel.Model
             {
                 foreach (var room in this._roomList.Where(rm => rm.roomId == roomId))
                 {
-                    if (room.status != ROOM_STATUS.Available 
-                        || room.status != ROOM_STATUS.Occupied)
+                    if (room.status == ROOM_STATUS.Repair)
                     {
-                        room.status = ROOM_STATUS.Repair;
+                        room.status = ROOM_STATUS.Vacant;
                         return true;
                     }
                 }

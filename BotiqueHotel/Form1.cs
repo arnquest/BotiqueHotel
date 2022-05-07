@@ -88,7 +88,8 @@ namespace BotiqueHotel
             {
                 roomBindingSource.Add(new Room() { roomId = rm.roomId, roomNumber = rm.roomNumber, status = rm.status });
             }
-           
+
+            dataGridViewRooms.Update();
             dataGridViewRooms.Refresh();
         }
 
@@ -106,18 +107,67 @@ namespace BotiqueHotel
 
         private void dataGridViewRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            switch (dataGridViewRooms.Columns[e.ColumnIndex].Name)
-            {
-                case "Check-In":
-                    break;
-                case "Check-Out":
-                    break;
-                case "Cleaned":
-                    break;
-                case "Out-of-Service":
-                    break;
-                case "Repaired":
-                    break;
+            if (dataGridViewRooms[0, e.RowIndex].Value != null)
+            { 
+                int roomId = Convert.ToInt32(dataGridViewRooms[0, e.RowIndex].Value);
+
+                switch (dataGridViewRooms.Columns[e.ColumnIndex].Name)
+                {
+                    case "Check-In":
+                        if (controller.checkIn(roomId))
+                        {
+                            MessageBox.Show(this, "Check In Successful!", "Successful!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "This room is not available for Check In", "Unable to Check In", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    case "Check-Out":
+                        if (controller.checkOut(roomId))
+                        {
+                            MessageBox.Show(this, "Check Out Successful!!", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "This room is not available for Check Out", "Unable to Check Out", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    case "Cleaned":
+                        if (controller.setRoomAsCleaned(roomId))
+                        {
+                            MessageBox.Show(this, "Updated the room as cleaned", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Unable to update this room as Cleaned", "Unable to set it as Cleaned", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    case "Out-of-Service":
+                        if (controller.setRoomOOS(roomId))
+                        {
+                            MessageBox.Show(this, "Successfully updated the room for repair", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Unable to update this room for repair", "Unable to set it as Repair", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                    case "Repaired":
+                        if (controller.setRoomAsRepaired(roomId))
+                        {
+                            MessageBox.Show(this, "Successfully updated the room as Repaired", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(this, "Unable to update this room as Repaired", "Unable to set it as Repaired", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        break;
+                }
+
+                List<Room> rooms = this.controller.getAllRooms();
+                PopulateListViewData(rooms);
+
             }
             
         }
