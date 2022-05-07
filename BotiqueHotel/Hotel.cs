@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BotiqueHotel
+namespace BotiqueHotel.Model
 {
     internal class Hotel
     {
